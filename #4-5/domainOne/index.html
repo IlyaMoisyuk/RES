@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<iframe src="../domainTwo/index.html"></iframe>
+<script>
+window.onload = function() {
+    var iframe = document.getElementsByTagName('iframe')[0];
+    var win = iframe.contentWindow;
+    var dat = "hi";
+    win.postMessage(JSON.stringify({key: 'key', func: "set", data: dat}), "*");
+
+    
+    // win.postMessage(JSON.stringify({key: 'key', func: "get"}), "*");
+    // win.postMessage(JSON.stringify({key: 'key', func: "remove"}), "*");
+};
+</script>
+</body>
+</html>

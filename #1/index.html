@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .red {color: red;}
+    </style>
+  </head>
+  <body>
+        <input type="text" name="name" id="name_input" value="Xxsxx">
+  </body>
+  <script>
+    (function(){
+      var input = document.querySelector('input');
+      var defaults = input.value;
+
+      input.addEventListener("input" , function(){
+        if(this.value === defaults){
+            this.classList.remove("red");
+        }else{
+            this.classList.add("red");
+        } 
+      });
+
+
+    }())
+  </script>
+</html>

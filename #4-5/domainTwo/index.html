@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+<script>
+
+var promise = new Promise(function(resolve){ 
+    window.onmessage = function(e) {
+    var local = JSON.parse(e.data);
+    if(local.func == "set"){
+        localStorage.setItem(local.key, JSON.stringify(local.data));
+        console.log('written');
+        resolve("set")
+    }else if(local.func == "get"){
+        var parent = window.parent;
+        var data = localStorage.getItem(local.key);
+        console.log(data);
+        resolve("get")
+    }else if(local.func == "remove"){
+        localStorage.removeItem(local.key);
+        console.log('removed');
+        resolve("remove")
+    }
+}
+}).then( function(callback){
+    console.log(callback, "callback");
+})
+</script>
+</body>
+</html>

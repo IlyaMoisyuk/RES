@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+
+  <script>
+    
+    var go = new Promise(function(resolve, reject){
+        if(request("https://jsonplaceholder.typicode.com/posts") && request("https://jsonplaceholder.typicode.com/comments")){
+            resolve(true);
+        };
+    }).then(function(status){
+        if(status){
+            console.log("Оба ответа получены")
+        }
+    })
+
+    
+    function request(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, false);
+      xhr.send();
+        if(xhr.status == 200){
+            return true;
+        }else{
+            return false;
+        }
+    }
+  </script>
+
+</body>
+</html>
